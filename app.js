@@ -468,44 +468,102 @@ function renderCandidates() {
   }
 
   if (filtered.length === 0) {
-    gridEl.innerHTML = `
-      <div style="grid-column: 1 / -1; text-align: center; padding: 3rem 1rem; background: #fff; border-radius: 16px; border: 1px solid rgba(9,99,102,0.14);">
-        <p style="font-size: 1.15rem; font-weight: 800; color: #043536; margin-bottom: 0.5rem;">لا توجد نتائج مطابقة لبحثك</p>
-        <p style="color: #425f60; font-size: 0.95rem;">جرّب البحث باسم آخر أو اختر "كل المترشحين" لعرض القائمة الكاملة.</p>
-      </div>
-    `;
+    const emptyBox = document.createElement('div');
+    emptyBox.className = 'empty-results';
+
+    const titleP = document.createElement('p');
+    titleP.className = 'empty-results__title';
+    titleP.textContent = 'لا توجد نتائج مطابقة لبحثك';
+
+    const descP = document.createElement('p');
+    descP.className = 'empty-results__desc';
+    descP.textContent = 'جرّب البحث باسم آخر أو اختر "كل المترشحين" لعرض القائمة الكاملة.';
+
+    emptyBox.append(titleP, descP);
+    gridEl.replaceChildren(emptyBox);
     return;
   }
 
-  gridEl.innerHTML = filtered
-    .map(
-      (c) => `
-      <article class="candidate-card ${c.assembly === 'apw' ? 'candidate-card--apw' : ''} ${c.featured ? 'candidate-card--featured' : ''}" data-candidate-id="${c.id}" tabindex="0">
-        <div class="candidate-card__top">
-          <div class="candidate-card__avatar-wrap">
-            <img src="${c.avatar}" alt="المترشح ${c.name}" class="candidate-card__avatar" loading="lazy" width="78" height="78">
-            <span class="candidate-card__number" title="الترتيب في القائمة">${c.number}</span>
-          </div>
-          <div class="candidate-card__head-info">
-            <span class="candidate-card__assembly">${c.assemblyLabel}</span>
-            <h3 class="candidate-card__name">${c.name}</h3>
-            <span class="candidate-card__age">${c.age}</span>
-          </div>
-        </div>
-        <div class="candidate-card__body">
-          <div>
-            <p class="candidate-card__qual">${c.qualification}</p>
-            <p class="candidate-card__role" style="margin-top: 0.35rem;">${c.role}</p>
-          </div>
-          <div class="candidate-card__footer">
-            <span>القائمة رقم 02 • ترتيب ${c.number}</span>
-            <span>عرض البطاقة ←</span>
-          </div>
-        </div>
-      </article>
-    `
-    )
-    .join('');
+  const fragment = document.createDocumentFragment();
+
+  filtered.forEach((c) => {
+    const article = document.createElement('article');
+    article.className = 'candidate-card';
+    if (c.assembly === 'apw') article.classList.add('candidate-card--apw');
+    if (c.featured) article.classList.add('candidate-card--featured');
+    article.dataset.candidateId = c.id;
+    article.tabIndex = 0;
+
+    const topDiv = document.createElement('div');
+    topDiv.className = 'candidate-card__top';
+
+    const avatarWrap = document.createElement('div');
+    avatarWrap.className = 'candidate-card__avatar-wrap';
+
+    const img = document.createElement('img');
+    img.src = c.avatar;
+    img.alt = `المترشح ${c.name}`;
+    img.className = 'candidate-card__avatar';
+    img.loading = 'lazy';
+    img.width = 78;
+    img.height = 78;
+
+    const numBadge = document.createElement('span');
+    numBadge.className = 'candidate-card__number';
+    numBadge.title = 'الترتيب في القائمة';
+    numBadge.textContent = c.number;
+
+    avatarWrap.append(img, numBadge);
+
+    const headInfo = document.createElement('div');
+    headInfo.className = 'candidate-card__head-info';
+
+    const assemblySpan = document.createElement('span');
+    assemblySpan.className = 'candidate-card__assembly';
+    assemblySpan.textContent = c.assemblyLabel;
+
+    const nameH3 = document.createElement('h3');
+    nameH3.className = 'candidate-card__name';
+    nameH3.textContent = c.name;
+
+    const ageSpan = document.createElement('span');
+    ageSpan.className = 'candidate-card__age';
+    ageSpan.textContent = c.age;
+
+    headInfo.append(assemblySpan, nameH3, ageSpan);
+    topDiv.append(avatarWrap, headInfo);
+
+    const bodyDiv = document.createElement('div');
+    bodyDiv.className = 'candidate-card__body';
+
+    const infoWrap = document.createElement('div');
+    const qualP = document.createElement('p');
+    qualP.className = 'candidate-card__qual';
+    qualP.textContent = c.qualification;
+
+    const roleP = document.createElement('p');
+    roleP.className = 'candidate-card__role';
+    roleP.textContent = c.role;
+
+    infoWrap.append(qualP, roleP);
+
+    const footerDiv = document.createElement('div');
+    footerDiv.className = 'candidate-card__footer';
+
+    const listOrderSpan = document.createElement('span');
+    listOrderSpan.textContent = `القائمة رقم 02 • ترتيب ${c.number}`;
+
+    const viewCardSpan = document.createElement('span');
+    viewCardSpan.textContent = 'عرض البطاقة ←';
+
+    footerDiv.append(listOrderSpan, viewCardSpan);
+    bodyDiv.append(infoWrap, footerDiv);
+
+    article.append(topDiv, bodyDiv);
+    fragment.appendChild(article);
+  });
+
+  gridEl.replaceChildren(fragment);
 }
 
 function openCandidateModal(candidateId) {

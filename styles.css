@@ -997,6 +997,146 @@ button, input, select {
   font-size: 0.85rem;
   color: var(--text-muted);
   font-weight: 600;
+  margin-top: 0.35rem;
+}
+
+.empty-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem 1rem;
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid rgba(9, 99, 102, 0.14);
+}
+
+.empty-results__title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #043536;
+  margin-bottom: 0.5rem;
+}
+
+.empty-results__desc {
+  color: #425f60;
+  font-size: 0.95rem;
+}
+
+.results-meta-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 700;
+  padding-inline: 0.25rem;
+}
+
+.pillar-card__summary {
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.cta-section {
+  padding-top: 1rem;
+}
+
+.footer-brand {
+  margin-bottom: 1rem;
+}
+
+.footer-brand__title {
+  color: #fff;
+}
+
+.footer-brand__subtitle {
+  color: var(--rnd-teal-100);
+}
+
+.footer-about {
+  font-size: 0.92rem;
+  color: var(--rnd-teal-100);
+  max-width: 46ch;
+}
+
+.dialog-assembly {
+  font-size: 0.8rem;
+  color: var(--rnd-gold-400);
+  font-weight: 700;
+  display: block;
+}
+
+.dialog-title {
+  font-size: 1.25rem;
+  color: #fff;
+}
+
+.dialog-vote-badge {
+  margin-bottom: 0.45rem;
+}
+
+.dialog-candidate-name {
+  font-size: 1.35rem;
+  color: var(--rnd-teal-950);
+}
+
+.dialog-candidate-age {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.dialog-credentials-box {
+  background: var(--rnd-teal-50);
+  border: 1px solid var(--rnd-teal-100);
+  border-radius: 12px;
+  padding: 1rem 1.15rem;
+  margin-bottom: 1.25rem;
+}
+
+.dialog-field-label {
+  font-size: 0.82rem;
+  color: var(--rnd-teal-800);
+  font-weight: 800;
+  margin-bottom: 0.25rem;
+}
+
+.dialog-qual-value {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 0.75rem;
+}
+
+.dialog-role-value {
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.dialog-actions-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: space-between;
+}
+
+.dialog-actions-row .btn {
+  flex: 1;
+}
+
+.lightbox-title {
+  font-size: 1.05rem;
+  color: #fff;
+}
+
+.lightbox-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.spotlight-ctas {
+  margin-bottom: 0;
 }
 
 .candidate-card__footer {

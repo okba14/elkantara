@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'; upgrade-insecure-requests; require-trusted-types-for 'script';">
   <title>التجمع الوطني الديمقراطي RND - القنطرة | انتخب القائمة رقم 02 (محليات 28 نوفمبر 2026)</title>
   <meta name="description" content="البوابة الرسمية للحملة الانتخابية للمجلس الشعبي البلدي والمجلس الشعبي الولائي بالقنطرة - التجمع الوطني الديمقراطي (RND) - القائمة رقم 02. استمرارية... ثقة... وإنجاز. القنطرة قبل كل شيء.">
   <meta name="keywords" content="القنطرة, الانتخابات البلدية القنطرة, التجمع الوطني الديمقراطي, RND, الأرندي القنطرة, القائمة رقم 2, بن حفيظ أحمد تقي الدين, عوبيد أسامة, قيسي شعيب, محليات 28 نوفمبر 2026, elkantra">
@@ -257,7 +259,7 @@
               <li>تنمية محلية وإدارة رقمية قريبة</li>
             </ul>
 
-            <div class="hero__ctas" style="margin-bottom: 0;">
+            <div class="hero__ctas spotlight-ctas">
               <button type="button" class="btn btn--red" id="openAhmedModalBtn">
                 <span>مشاركة بطاقة المترشح رقم 08</span>
               </button>
@@ -317,7 +319,7 @@
             </div>
           </div>
 
-          <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: var(--text-muted); font-weight: 700; padding-inline: 0.25rem;">
+          <div class="results-meta-bar">
             <span id="resultsCount">عرض 22 من أصل 33 مترشحاً</span>
             <span>اضغط على أي بطاقة مترشح لمعاينة التفاصيل ومشاركتها</span>
           </div>
@@ -354,7 +356,7 @@
                 <h3 class="pillar-card__title">بيئة نظيفة وإطار عيش أفضل</h3>
               </div>
             </div>
-            <p class="pretty-text" style="color: var(--text-muted); font-weight: 600;">
+            <p class="pretty-text pillar-card__summary">
               الارتقاء بالمحيط البيئي والعمراني لمدينة القنطرة وأحيائها، وحماية موروثها الطبيعي والواحاتي.
             </p>
             <ul class="pillar-card__list">
@@ -379,7 +381,7 @@
                 <h3 class="pillar-card__title">استثمار وفرص عمل</h3>
               </div>
             </div>
-            <p class="pretty-text" style="color: var(--text-muted); font-weight: 600;">
+            <p class="pretty-text pillar-card__summary">
               تثمين الثروات المحلية والموقع الاستراتيجي للقنطرة لخلق الثروة ومناصب الشغل المستدامة لشبابنا.
             </p>
             <ul class="pillar-card__list">
@@ -405,7 +407,7 @@
                 <h3 class="pillar-card__title">بنية تحتية متطورة</h3>
               </div>
             </div>
-            <p class="pretty-text" style="color: var(--text-muted); font-weight: 600;">
+            <p class="pretty-text pillar-card__summary">
               تأهيل الشبكات الحيوية والطرقات لضمان تنقل آمن وخدمات أساسية منتظمة لكل مواطن.
             </p>
             <ul class="pillar-card__list">
@@ -432,7 +434,7 @@
                 <h3 class="pillar-card__title">تنمية محلية وحوكمة تشاركية</h3>
               </div>
             </div>
-            <p class="pretty-text" style="color: var(--text-muted); font-weight: 600;">
+            <p class="pretty-text pillar-card__summary">
               بلدية عصرية، شفافة، ومفتوحة الأبواب تُشرك المواطن والمجتمع المدني في صناعة القرار المحلي.
             </p>
             <ul class="pillar-card__list">
@@ -553,7 +555,7 @@
     </section>
 
     <!-- دعوة للتفاعل والمشاركة -->
-    <section class="section" style="padding-top: 1rem;">
+    <section class="section cta-section">
       <div class="container">
         <div class="cta-banner">
           <h2 class="cta-banner__title">كونوا سفراء للحملة في القنطرة!</h2>
@@ -581,17 +583,17 @@
     <div class="container">
       <div class="site-footer__grid">
         <div>
-          <div class="brand" style="margin-bottom: 1rem;">
+          <div class="brand footer-brand">
             <img src="image/logo.jpg" alt="شعار RND القنطرة" class="brand__logo" loading="lazy" width="54" height="54">
             <div class="brand__text">
-              <span class="brand__title" style="color: #fff;">
+              <span class="brand__title footer-brand__title">
                 التجمع الوطني الديمقراطي (RND)
                 <span class="brand__badge">رقم 02</span>
               </span>
-              <span class="brand__subtitle" style="color: var(--rnd-teal-100);">القنطرة • محليات 28 نوفمبر 2026</span>
+              <span class="brand__subtitle footer-brand__subtitle">القنطرة • محليات 28 نوفمبر 2026</span>
             </div>
           </div>
-          <p style="font-size: 0.92rem; color: var(--rnd-teal-100); max-width: 46ch;">
+          <p class="footer-about">
             الموقع الترويجي الرسمي لحملة مترشحي التجمع الوطني الديمقراطي (القائمة رقم 02) لانتخابات المجلس الشعبي البلدي والمجلس الشعبي الولائي بالقنطرة.
             <br><strong>«استمرارية ... ثقة ... وإنجاز»</strong>
           </p>
@@ -642,8 +644,8 @@
   <dialog id="candidateDialog" class="campaign-dialog" closedby="any" aria-labelledby="dialogTitle">
     <div class="dialog-header">
       <div>
-        <span id="dialogAssembly" style="font-size: 0.8rem; color: var(--rnd-gold-400); font-weight: 700; display: block;"></span>
-        <h2 id="dialogTitle" style="font-size: 1.25rem; color: #fff;"></h2>
+        <span id="dialogAssembly" class="dialog-assembly"></span>
+        <h2 id="dialogTitle" class="dialog-title"></h2>
       </div>
       <form method="dialog">
         <button type="submit" class="dialog-close" aria-label="إغلاق النافذة" autofocus>✕</button>
@@ -653,24 +655,24 @@
       <div class="dialog-candidate-profile">
         <img id="dialogAvatar" src="image/logo.jpg" alt="" width="104" height="104">
         <div>
-          <span id="dialogVoteBadge" class="pill pill--red" style="margin-bottom: 0.45rem;"></span>
-          <h3 id="dialogName" style="font-size: 1.35rem; color: var(--rnd-teal-950);"></h3>
-          <p id="dialogAge" style="font-size: 0.9rem; color: var(--text-muted); font-weight: 700;"></p>
+          <span id="dialogVoteBadge" class="pill pill--red dialog-vote-badge"></span>
+          <h3 id="dialogName" class="dialog-candidate-name"></h3>
+          <p id="dialogAge" class="dialog-candidate-age"></p>
         </div>
       </div>
 
-      <div style="background: var(--rnd-teal-50); border: 1px solid var(--rnd-teal-100); border-radius: 12px; padding: 1rem 1.15rem; margin-bottom: 1.25rem;">
-        <p style="font-size: 0.82rem; color: var(--rnd-teal-800); font-weight: 800; margin-bottom: 0.25rem;">المؤهل العلمي / الكفاءة:</p>
-        <p id="dialogQual" style="font-size: 1rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.75rem;"></p>
-        <p style="font-size: 0.82rem; color: var(--rnd-teal-800); font-weight: 800; margin-bottom: 0.25rem;">المهنة / المسؤولية الحالية:</p>
-        <p id="dialogRole" style="font-size: 0.96rem; font-weight: 700; color: var(--text-muted);"></p>
+      <div class="dialog-credentials-box">
+        <p class="dialog-field-label">المؤهل العلمي / الكفاءة:</p>
+        <p id="dialogQual" class="dialog-qual-value"></p>
+        <p class="dialog-field-label">المهنة / المسؤولية الحالية:</p>
+        <p id="dialogRole" class="dialog-role-value"></p>
       </div>
 
-      <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: space-between;">
-        <button type="button" class="btn btn--red" id="dialogShareBtn" style="flex: 1;">
+      <div class="dialog-actions-row">
+        <button type="button" class="btn btn--red" id="dialogShareBtn">
           مشاركة بطاقة المترشح
         </button>
-        <button type="button" class="btn btn--teal" id="dialogViewPosterBtn" style="flex: 1;">
+        <button type="button" class="btn btn--teal" id="dialogViewPosterBtn">
           معاينة الملصق الرسمي
         </button>
       </div>
@@ -680,9 +682,9 @@
   <!-- نافذة تكبير الملصقات الرسمية (Native Lightbox Modal Dialog with closedby="any") -->
   <dialog id="lightboxDialog" class="campaign-dialog campaign-dialog--lightbox" closedby="any" aria-labelledby="lightboxTitle">
     <div class="dialog-header">
-      <h2 id="lightboxTitle" style="font-size: 1.05rem; color: #fff;">ملصق الحملة الرسمي</h2>
-      <div style="display: flex; align-items: center; gap: 0.6rem;">
-        <a id="lightboxDownload" href="#" download class="pill pill--gold" style="text-decoration: none;">⬇ تحميل الصورة</a>
+      <h2 id="lightboxTitle" class="lightbox-title">ملصق الحملة الرسمي</h2>
+      <div class="lightbox-controls">
+        <a id="lightboxDownload" href="#" download class="pill pill--gold">⬇ تحميل الصورة</a>
         <form method="dialog">
           <button type="submit" class="dialog-close" aria-label="إغلاق المعاينة" autofocus>✕</button>
         </form>
