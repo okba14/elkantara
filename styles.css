@@ -616,78 +616,213 @@ button, input, select {
   font-size: 1.05rem;
 }
 
-/* Featured Candidate Spotlight (Benhafidh Ahmed #08) */
-.spotlight-card {
-  background: linear-gradient(135deg, var(--rnd-teal-950) 0%, var(--rnd-teal-800) 60%, #0a585b 100%);
-  color: #fff;
-  border-radius: var(--radius-xl);
-  padding: clamp(1.5rem, 3.5vw, 3rem);
-  box-shadow: var(--shadow-lg);
+/* Featured Candidates Spotlight (Benhafidh Ahmed #08, Bennara Samah #08, Kissi Chouaib #01, Hamdane Mohamed Tayeb #03, Oubid Oussama #01) */
+.spotlight-trio-grid {
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 2.5rem;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-  border: 2px solid rgba(212, 164, 55, 0.35);
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 1.5rem;
+  align-items: stretch;
 }
 
-.spotlight-card__posters {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+.spotlight-card {
+  grid-column: span 2;
+  background: linear-gradient(155deg, var(--rnd-teal-950) 0%, var(--rnd-teal-900) 52%, #07474a 100%);
+  color: #fff;
+  border-radius: var(--radius-xl);
+  padding: 1.35rem;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid rgba(212, 164, 55, 0.38);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.spotlight-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #00a651 0%, var(--rnd-gold-400) 50%, var(--rnd-red-600) 100%);
+  pointer-events: none;
+}
+
+.spotlight-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--rnd-gold-400);
+  box-shadow: 0 24px 52px rgba(2, 35, 36, 0.32), 0 0 0 1px rgba(236, 195, 92, 0.45);
+}
+
+/* Desktop positioning: 3 equal cards on row 1 (with Benhafidh Ahmed in the middle), 2 equal centered cards on row 2 */
+@media (min-width: 1025px) {
+  .spotlight-card--bennara {
+    grid-column: 1 / span 2;
+    grid-row: 1;
+  }
+
+  .spotlight-card--centerpiece {
+    grid-column: 3 / span 2;
+    grid-row: 1;
+    border-color: rgba(236, 195, 92, 0.65);
+    box-shadow: 0 22px 48px rgba(2, 35, 36, 0.3), 0 0 28px rgba(212, 164, 55, 0.14);
+  }
+
+  .spotlight-card--kissi {
+    grid-column: 5 / span 2;
+    grid-row: 1;
+  }
+
+  .spotlight-card--hamdane {
+    grid-column: 2 / span 2;
+    grid-row: 2;
+  }
+
+  .spotlight-card--oubid {
+    grid-column: 4 / span 2;
+    grid-row: 2;
+  }
+}
+
+.spotlight-card__top-bar {
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.95rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.spotlight-card__assembly-tag {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--rnd-teal-100);
+  background: rgba(255, 255, 255, 0.09);
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.spotlight-card__rank-medal {
+  font-size: 0.8rem;
+  font-weight: 900;
+  color: var(--rnd-teal-950);
+  background: linear-gradient(135deg, var(--rnd-gold-400), var(--rnd-gold-500));
+  padding: 0.28rem 0.8rem;
+  border-radius: var(--radius-full);
+  box-shadow: 0 4px 12px rgba(212, 164, 55, 0.35);
+  white-space: nowrap;
+}
+
+.spotlight-card__stage {
+  position: relative;
+  margin-bottom: 1.15rem;
 }
 
 .poster-frame {
   position: relative;
   border-radius: var(--radius-md);
   overflow: hidden;
-  border: 3px solid rgba(255, 255, 255, 0.28);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+  border: 2.5px solid rgba(236, 195, 92, 0.38);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.38);
   cursor: pointer;
   transition: transform 0.25s ease, border-color 0.25s ease;
-  background: var(--rnd-teal-900);
+  background:
+    radial-gradient(circle at 50% 30%, rgba(20, 150, 155, 0.32), rgba(2, 35, 36, 0.96) 78%);
 }
 
 .poster-frame:hover {
-  transform: translateY(-5px) scale(1.01);
+  transform: scale(1.015);
   border-color: var(--rnd-gold-400);
 }
 
-.poster-frame img {
+.poster-frame--main {
+  aspect-ratio: 4 / 4.8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem;
+}
+
+.poster-frame--main img {
   width: 100%;
-  aspect-ratio: 2 / 3;
-  object-fit: cover;
+  height: 100%;
+  object-fit: contain;
+  border-radius: calc(var(--radius-md) - 4px);
 }
 
 .poster-frame__zoom {
   position: absolute;
-  bottom: 0.6rem;
-  left: 0.6rem;
-  background: rgba(2, 35, 36, 0.82);
+  bottom: 0.65rem;
+  left: 0.65rem;
+  background: rgba(2, 35, 36, 0.86);
   color: #fff;
-  font-size: 0.75rem;
+  font-size: 0.74rem;
   font-weight: 700;
-  padding: 0.25rem 0.65rem;
+  padding: 0.28rem 0.7rem;
   border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(6px);
+}
+
+.spotlight-card__alt-poster {
+  position: absolute;
+  bottom: 0.65rem;
+  right: 0.65rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(4, 53, 54, 0.92);
+  color: var(--rnd-gold-400);
+  border: 1.5px solid rgba(236, 195, 92, 0.55);
+  border-radius: var(--radius-full);
+  padding: 0.22rem 0.65rem 0.22rem 0.28rem;
+  font-family: inherit;
+  font-size: 0.72rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.spotlight-card__alt-poster:hover {
+  transform: translateY(-2px);
+  background: var(--rnd-teal-800);
+}
+
+.spotlight-card__alt-poster img {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid var(--rnd-gold-400);
+}
+
+.spotlight-card__info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .spotlight-card__badges {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem;
-  margin-bottom: 1rem;
+  gap: 0.45rem;
+  margin-bottom: 0.85rem;
 }
 
 .pill {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.35rem 0.9rem;
+  gap: 0.35rem;
+  padding: 0.28rem 0.72rem;
   border-radius: var(--radius-full);
-  font-size: 0.85rem;
+  font-size: 0.76rem;
   font-weight: 800;
 }
 
@@ -708,38 +843,42 @@ button, input, select {
 }
 
 .spotlight-card__name {
-  font-size: clamp(1.75rem, 3vw, 2.5rem);
-  margin-bottom: 0.35rem;
+  font-size: clamp(1.35rem, 1.8vw, 1.65rem);
+  margin-bottom: 0.3rem;
   color: #fff;
 }
 
 .spotlight-card__role {
-  font-size: 1.15rem;
+  font-size: 0.93rem;
   color: var(--rnd-gold-400);
   font-weight: 700;
-  margin-bottom: 1.15rem;
+  line-height: 1.45;
+  min-height: 2.85em;
+  margin-bottom: 0.85rem;
 }
 
 .spotlight-card__bio {
   color: var(--text-light);
-  font-size: 1.02rem;
-  margin-bottom: 1.35rem;
+  font-size: 0.91rem;
+  line-height: 1.68;
+  margin-bottom: 1.1rem;
+  flex: 1;
 }
 
 .spotlight-points {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.75rem;
-  margin-bottom: 1.65rem;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
 }
 
 .spotlight-points li {
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: var(--radius-sm);
-  padding: 0.65rem 0.85rem;
-  font-size: 0.9rem;
+  padding: 0.52rem 0.75rem;
+  font-size: 0.84rem;
   font-weight: 700;
   display: flex;
   align-items: center;
@@ -750,14 +889,28 @@ button, input, select {
   content: "✓";
   display: inline-grid;
   place-items: center;
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   background: var(--rnd-gold-500);
   color: var(--rnd-teal-950);
   font-weight: 900;
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   flex-shrink: 0;
+}
+
+.spotlight-ctas {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.spotlight-ctas .btn {
+  width: 100%;
+  justify-content: center;
+  padding: 0.7rem 1rem;
+  font-size: 0.88rem;
 }
 
 /* Candidates Directory Controls */
@@ -1150,11 +1303,181 @@ button, input, select {
   color: var(--rnd-teal-700);
 }
 
+/* Program Vision, 12 Axes Grid, & Closing Pledge */
+.program-slogan-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--rnd-red-600), var(--rnd-red-700));
+  color: #ffffff;
+  font-weight: 900;
+  font-size: 1.08rem;
+  padding: 0.5rem 1.45rem;
+  border-radius: var(--radius-full);
+  box-shadow: 0 8px 22px rgba(214, 24, 38, 0.25);
+  margin-top: 0.4rem;
+}
+
+.program-vision-card {
+  background: linear-gradient(140deg, var(--rnd-teal-950) 0%, var(--rnd-teal-800) 60%, #09595c 100%);
+  color: #ffffff;
+  border-radius: var(--radius-xl);
+  padding: clamp(1.65rem, 3.5vw, 2.75rem);
+  box-shadow: var(--shadow-lg);
+  border: 2px solid rgba(212, 164, 55, 0.35);
+  margin-bottom: 3rem;
+}
+
+.program-vision-card__header {
+  margin-bottom: 1.35rem;
+}
+
+.program-vision-card__title {
+  font-size: clamp(1.45rem, 2.8vw, 2.1rem);
+  color: #ffffff;
+  margin-top: 0.7rem;
+}
+
+.program-vision-card__body {
+  display: grid;
+  gap: 0.95rem;
+  color: var(--text-light);
+  font-size: 1.03rem;
+  line-height: 1.78;
+  margin-bottom: 1.75rem;
+}
+
+.program-vision-card__body strong {
+  color: var(--rnd-gold-400);
+}
+
+.program-principles {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+}
+
+.program-principles__label {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--rnd-gold-400);
+  margin-bottom: 0.9rem;
+}
+
+.program-principles__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+}
+
+.program-principle-item {
+  background: rgba(2, 35, 36, 0.55);
+  border: 1px solid rgba(236, 195, 92, 0.35);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-weight: 800;
+  font-size: 0.98rem;
+  color: #ffffff;
+}
+
+.program-principle-item__num {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--rnd-red-600);
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 900;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.program-axes-heading {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.program-axes-heading h3 {
+  font-size: clamp(1.4rem, 2.5vw, 1.95rem);
+  color: var(--rnd-teal-950);
+  margin-bottom: 0.35rem;
+}
+
+.program-axes-heading p {
+  color: var(--text-muted);
+  font-weight: 700;
+  font-size: 0.98rem;
+}
+
 /* Program Pillars Grid */
 .program-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
+}
+
+.program-grid--twelve {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.35rem;
+}
+
+.program-pledge-card {
+  margin-top: 3rem;
+  background: linear-gradient(135deg, #ffffff 0%, var(--rnd-teal-50) 100%);
+  border: 2px solid var(--rnd-teal-600);
+  border-radius: var(--radius-xl);
+  padding: clamp(1.65rem, 3.5vw, 2.75rem);
+  box-shadow: var(--shadow-md);
+  text-align: center;
+  max-width: 920px;
+  margin-inline: auto;
+}
+
+.program-pledge-card__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--rnd-teal-800);
+  color: var(--rnd-gold-400);
+  font-weight: 900;
+  font-size: 0.95rem;
+  padding: 0.4rem 1.2rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 0.9rem;
+}
+
+.program-pledge-card__greeting {
+  font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+  color: var(--rnd-teal-950);
+  margin-bottom: 1rem;
+}
+
+.program-pledge-card__text {
+  color: var(--text-main);
+  font-size: 1.03rem;
+  font-weight: 600;
+  line-height: 1.8;
+  max-width: 72ch;
+  margin-inline: auto;
+  margin-bottom: 0.95rem;
+}
+
+.program-pledge-card__seal {
+  display: inline-block;
+  margin-top: 0.65rem;
+  background: linear-gradient(90deg, var(--rnd-red-600), var(--rnd-red-700));
+  color: #ffffff;
+  font-weight: 900;
+  font-size: 1.05rem;
+  padding: 0.6rem 1.5rem;
+  border-radius: var(--radius-full);
+  box-shadow: 0 8px 20px rgba(214, 24, 38, 0.25);
 }
 
 .pillar-card {
@@ -1846,14 +2169,31 @@ dialog::backdrop {
 /* ==========================================================================
    Enhanced Mobile & Tablet Responsive Polish
    ========================================================================== */
+@media (max-width: 1024px) {
+  .spotlight-trio-grid {
+    grid-template-columns: 1fr;
+    max-width: 560px;
+    margin-inline: auto;
+  }
+
+  .spotlight-card {
+    grid-column: 1 / -1;
+  }
+
+  .spotlight-card__role {
+    min-height: 0;
+  }
+}
+
 @media (max-width: 992px) {
   .hero {
     padding-block: 2.5rem 4.2rem;
   }
 
   .hero__grid,
-  .spotlight-card,
   .program-grid,
+  .program-grid--twelve,
+  .program-principles__grid,
   .vote-steps,
   .site-footer__grid {
     grid-template-columns: 1fr;
@@ -2119,13 +2459,13 @@ dialog::backdrop {
   }
 
   .spotlight-card {
-    padding: 1.25rem;
-    gap: 1.5rem;
+    padding: 1.15rem;
     border-radius: var(--radius-lg);
   }
 
-  .spotlight-card__posters {
-    gap: 0.65rem;
+  .spotlight-card__top-bar {
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
 
   .spotlight-card__badges {

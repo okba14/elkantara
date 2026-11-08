@@ -10,11 +10,12 @@ const CANDIDATES = [
     assemblyLabel: 'المجلس الشعبي البلدي • القنطرة',
     name: 'عوبيد أسامة',
     age: '38 سنة',
-    qualification: 'ماجيستار في العلوم السياسية والعلاقات الدولية',
-    role: 'مدير وحدة الجزائرية للمياه - القنطرة',
+    qualification: 'ماجيستير إدارة الجماعات المحلية • طالب دكتوراه في العلوم السياسية والعلاقات الدولية',
+    role: 'مدير وحدة الجزائرية للمياه القنطرة • نائب رئيس المجلس الشعبي البلدي (2021–2025)',
     category: 'management',
     avatar: 'image/candidates/apc-01.jpg',
-    poster: 'image/886730799_1838982523963233_3743914913683221876_n.jpg'
+    poster: 'image/oubid-oussama.jpg',
+    featured: true
   },
   {
     id: 'apc-02',
@@ -298,12 +299,13 @@ const CANDIDATES = [
     assembly: 'apw',
     assemblyLabel: 'المجلس الشعبي الولائي • القنطرة',
     name: 'قيسي شعيب',
-    age: 'إطار سامي',
-    qualification: 'تسيير وإدارة المرافق العمومية',
-    role: 'رئيس مؤسسة مكتب البريد - القنطرة',
+    age: '60 سنة',
+    qualification: 'إطار سامي في تسيير وإدارة المرافق العمومية',
+    role: 'رئيس مؤسسة مكتب بريد القنطرة',
     category: 'management',
     avatar: 'image/candidates/apw-01.jpg',
-    poster: 'image/894059576_122098363425542557_694586125396583683_n.jpg'
+    poster: 'image/kissi-chouaib.jpg',
+    featured: true
   },
   {
     id: 'apw-02',
@@ -324,12 +326,13 @@ const CANDIDATES = [
     assembly: 'apw',
     assemblyLabel: 'المجلس الشعبي الولائي • القنطرة',
     name: 'حمدان محمد الطيب',
-    age: 'أكاديمي وإعلامي',
-    qualification: 'بروفيسور في العلوم السياسية والعلاقات الدولية',
-    role: 'أستاذ بجامعة محمد خيضر بسكرة - كاتب صحفي',
+    age: '42 سنة',
+    qualification: 'بروفيسور في العلوم السياسية والعلاقات الدولية • ماجيستير تخصص دراسات مغاربية',
+    role: 'أستاذ بجامعة محمد خيضر بسكرة • باحث وإطار سابق في مديرية التشغيل وكاتب صحفي وناشط جمعوي',
     category: 'academic',
     avatar: 'image/candidates/apw-03.jpg',
-    poster: 'image/894059576_122098363425542557_694586125396583683_n.jpg'
+    poster: 'image/hamdane-mohamed-tayeb.jpg',
+    featured: true
   },
   {
     id: 'apw-04',
@@ -389,12 +392,13 @@ const CANDIDATES = [
     assembly: 'apw',
     assemblyLabel: 'المجلس الشعبي الولائي • القنطرة',
     name: 'بنارة سماح',
-    age: 'إطار بقطاع الصحة',
-    qualification: 'قابلة رئيسية خبرة أكثر من 12 سنة',
-    role: 'عضو في خلية التكوين المتواصل للمؤسسة العمومية للصحة الجوارية',
+    age: 'خبرة مهنية تتجاوز 12 سنة',
+    qualification: 'قابلة رئيسية بقطاع الصحة',
+    role: 'عضو في مكتب التكوين في المؤسسة العمومية للصحة الجوارية القنطرة',
     category: 'academic',
     avatar: 'image/candidates/apw-08.jpg',
-    poster: 'image/894059576_122098363425542557_694586125396583683_n.jpg'
+    poster: 'image/bennara-samah.jpg',
+    featured: true
   },
   {
     id: 'apw-09',
@@ -684,11 +688,12 @@ function initFilters() {
     });
   });
 
-  // Spotlight button for Benhafidh Ahmed (#08)
-  const ahmedCardBtn = document.getElementById('openAhmedModalBtn');
-  if (ahmedCardBtn) {
-    ahmedCardBtn.addEventListener('click', () => openCandidateModal('apc-08'));
-  }
+  // Spotlight buttons for featured candidates (Benhafidh Ahmed #08, Bennara Samah #08, Kissi Chouaib #01)
+  document.querySelectorAll('[data-open-candidate]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      openCandidateModal(btn.getAttribute('data-open-candidate'));
+    });
+  });
 }
 
 // Countdown Timer to Election Day: 28 November 2026 08:00:00 (Algeria Time UTC+1)
@@ -815,7 +820,7 @@ let revealObserver = null;
 
 function observeRevealElements() {
   const targets = document.querySelectorAll(
-    '.candidate-card:not(.reveal-ready), .pillar-card:not(.reveal-ready), .gallery-card:not(.reveal-ready), .step-card:not(.reveal-ready), .stat-card:not(.reveal-ready), .spotlight-card:not(.reveal-ready)'
+    '.candidate-card:not(.reveal-ready), .pillar-card:not(.reveal-ready), .gallery-card:not(.reveal-ready), .step-card:not(.reveal-ready), .stat-card:not(.reveal-ready), .spotlight-card:not(.reveal-ready), .program-vision-card:not(.reveal-ready), .program-pledge-card:not(.reveal-ready)'
   );
 
   if (!('IntersectionObserver' in window)) {
