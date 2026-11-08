@@ -564,6 +564,7 @@ function renderCandidates() {
   });
 
   gridEl.replaceChildren(fragment);
+  observeRevealElements();
 }
 
 function openCandidateModal(candidateId) {
@@ -739,27 +740,126 @@ function initNavigationAndSharing() {
     });
   }
 
+  async function triggerSiteShare(btnEl, defaultText) {
+    const shareData = {
+      title: 'التجمع الوطني الديمقراطي RND - القنطرة | انتخب رقم 02',
+      text: 'الموقع الرسمي للحملة الانتخابية للمجلس الشعبي البلدي والولائي بالقنطرة - التجمع الوطني الديمقراطي (RND) - القائمة رقم 02. استمرارية... ثقة... وإنجاز.',
+      url: 'https://elkantra.com/'
+    };
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+      } catch (_) {}
+    } else if (navigator.clipboard && btnEl) {
+      await navigator.clipboard.writeText(`${shareData.text}\n${shareData.url}`);
+      const labelSpan = btnEl.querySelector('span') || btnEl;
+      labelSpan.textContent = 'تم النسخ ✓';
+      setTimeout(() => {
+        labelSpan.textContent = defaultText;
+      }, 2200);
+    }
+  }
+
   const shareSiteBtn = document.getElementById('shareSiteBtn');
   if (shareSiteBtn) {
-    shareSiteBtn.addEventListener('click', async () => {
-      const shareData = {
-        title: 'التجمع الوطني الديمقراطي RND - القنطرة | انتخب رقم 02',
-        text: 'الموقع الرسمي للحملة الانتخابية للمجلس الشعبي البلدي والولائي بالقنطرة - التجمع الوطني الديمقراطي (RND) - القائمة رقم 02. استمرارية... ثقة... وإنجاز.',
-        url: 'https://elkantra.com/'
-      };
-      if (navigator.share) {
-        try {
-          await navigator.share(shareData);
-        } catch (_) {}
-      } else if (navigator.clipboard) {
-        await navigator.clipboard.writeText(`${shareData.text}\n${shareData.url}`);
-        shareSiteBtn.textContent = 'تم نسخ رابط الموقع ✓';
-        setTimeout(() => {
-          shareSiteBtn.textContent = 'مشاركة الموقع مع أصدقائك';
-        }, 2200);
+    shareSiteBtn.addEventListener('click', () =>
+      triggerSiteShare(shareSiteBtn, 'مشاركة الموقع مع أصدقائك')
+    );
+  }
+
+  const floatingShareBtn = document.getElementById('floatingShareBtn');
+  if (floatingShareBtn) {
+    floatingShareBtn.addEventListener('click', () =>
+      triggerSiteShare(floatingShareBtn, 'مشاركة')
+    );
+  }
+}
+
+// 7. Gmail-Inspired Splash Screen Controller
+function initSplashScreen() {
+  const splashEl = document.getElementById('splashScreen');
+  if (!splashEl) return;
+
+  const hideSplash = () => {
+    splashEl.classList.add('is-hidden');
+  };
+
+  setTimeout(hideSplash, 1450);
+  splashEl.addEventListener('click', hideSplash, { once: true });
+}
+
+// 1. Scroll Progress Bar Fallback (CSP-safe via adoptedStyleSheets without inline styles)
+function initScrollProgressFallback() {
+  if (!CSS.supports('animation-timeline', 'scroll()')) {
+    const progress = document.getElementById('scrollProgress');
+    if (!progress || !('adoptedStyleSheets' in document)) return;
+
+    const sheet = new CSSStyleSheet();
+    document.adoptedStyleSheets = [...document.adoptedStyleSheets, sheet];
+
+    window.addEventListener(
+      'scroll',
+      () => {
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = window.scrollY;
+        const progressPercentage = scrollable > 0 ? Math.min(1, Math.max(0, scrolled / scrollable)) : 0;
+        sheet.replaceSync(`.scroll-progress { transform: scaleX(${progressPercentage.toFixed(4)}); }`);
+      },
+      { passive: true }
+    );
+  }
+}
+
+// 2. Subtle Scroll Reveal Observer
+let revealObserver = null;
+
+function observeRevealElements() {
+  const targets = document.querySelectorAll(
+    '.candidate-card:not(.reveal-ready), .pillar-card:not(.reveal-ready), .gallery-card:not(.reveal-ready), .step-card:not(.reveal-ready), .stat-card:not(.reveal-ready), .spotlight-card:not(.reveal-ready)'
+  );
+
+  if (!('IntersectionObserver' in window)) {
+    targets.forEach((el) => el.classList.add('is-visible'));
+    return;
+  }
+
+  if (!revealObserver) {
+    revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -30px 0px' }
+    );
+  }
+
+  targets.forEach((el) => {
+    el.classList.add('reveal-item', 'reveal-ready');
+    revealObserver.observe(el);
+  });
+}
+
+// 4. Floating Action Pill Visibility (Modern Web Guidance: scroll-position-aware-elements)
+function initFloatingActions() {
+  const sentinel = document.getElementById('scrollSentinel');
+  const floatingEl = document.getElementById('floatingActions');
+  if (!sentinel || !floatingEl || !('IntersectionObserver' in window)) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) {
+        floatingEl.classList.add('is-visible');
+      } else {
+        floatingEl.classList.remove('is-visible');
       }
     });
-  }
+  });
+
+  observer.observe(sentinel);
 }
 
 // Modern Web Guidance: Mandatory fallback for browsers without <dialog closedby="any"> support
@@ -782,9 +882,13 @@ function initDialogLightDismissFallback() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  initSplashScreen();
   renderCandidates();
   initFilters();
   initCountdown();
   initNavigationAndSharing();
+  initScrollProgressFallback();
+  observeRevealElements();
+  initFloatingActions();
   initDialogLightDismissFallback();
 });

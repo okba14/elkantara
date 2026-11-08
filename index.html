@@ -32,6 +32,26 @@
 </head>
 <body>
 
+  <!-- 7. شاشة الترحيب الافتتاحية (مستوحاة من Gmail Workspace) -->
+  <div id="splashScreen" class="splash-screen" role="status" aria-live="polite" aria-label="جاري فتح الموقع الرسمي لحملة أرندي القنطرة">
+    <div class="splash-screen__card">
+      <div class="splash-screen__logo-wrap">
+        <img src="image/logo.jpg" alt="شعار التجمع الوطني الديمقراطي RND القنطرة" class="splash-screen__logo" width="116" height="116">
+      </div>
+      <div class="splash-screen__bar-track" aria-hidden="true">
+        <div class="splash-screen__bar-fill"></div>
+      </div>
+      <div class="splash-screen__title" dir="ltr">RND - ELKANTARA</div>
+      <p class="splash-screen__subtitle">محليات أعضاء المجالس الشعبية البلدية والولائية ليوم 28 نوفمبر 2026</p>
+    </div>
+  </div>
+
+  <!-- 1. شريط تقدم القراءة العلوي (Scroll Progress Bar) -->
+  <div id="scrollProgress" class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- عنصر مراقبة التمرير لإظهار الزر العائم -->
+  <div id="scrollSentinel" class="scroll-sentinel" aria-hidden="true"></div>
+
   <!-- الشريط الرسمي العلوي -->
   <div class="top-ribbon">
     <div class="container top-ribbon__inner">
@@ -331,7 +351,21 @@
     </section>
 
     <!-- البرنامج الانتخابي (الأركان الأربعة للتنمية المحلية في القنطرة) -->
-    <section class="section" id="program">
+    <section class="section section--watermark" id="program">
+      <!-- 3. خلفية مائية فنية لمعالم القنطرة (الجسر الروماني، المضيق، وواحة النخيل) -->
+      <svg class="kantara-watermark" viewBox="0 0 1200 500" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- جبال مضيق القنطرة (فم الصحراء) -->
+        <path d="M0 420 L180 140 L340 310 L490 95 L630 290 L760 110 L930 300 L1080 155 L1200 380" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- الجسر الروماني التاريخي بالقنطرة -->
+        <path d="M260 350 L940 350" stroke="currentColor" stroke-width="5"/>
+        <path d="M290 350 L290 460 M470 350 L470 460 M730 350 L730 460 M910 350 L910 460" stroke="currentColor" stroke-width="4"/>
+        <path d="M470 450 A130 100 0 0 1 730 450" stroke="currentColor" stroke-width="5"/>
+        <path d="M290 450 A90 70 0 0 1 470 450" stroke="currentColor" stroke-width="4"/>
+        <path d="M730 450 A90 70 0 0 1 910 450" stroke="currentColor" stroke-width="4"/>
+        <!-- نخيل واحة القنطرة -->
+        <path d="M140 460 Q145 380 135 330 M135 330 Q100 315 85 340 M135 330 Q110 295 90 305 M135 330 Q165 295 185 310 M135 330 Q175 315 190 340" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M1050 460 Q1045 385 1055 335 M1055 335 Q1020 320 1005 345 M1055 335 Q1030 300 1010 310 M1055 335 Q1085 300 1105 315 M1055 335 Q1095 320 1110 345" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+      </svg>
       <div class="container">
         <div class="section-header">
           <span class="section-header__eyebrow">📋 التزامنا أمام سكان القنطرة</span>
@@ -640,7 +674,26 @@
     </div>
   </footer>
 
-  <!-- نافذة تفاصيل المترشح (Native Modal Dialog with closedby="any" per modern-web-guidance) -->
+  <!-- 4. الزر العائم الأنيق للمشاركة السريعة والعودة للأعلى -->
+  <div id="floatingActions" class="floating-actions" aria-label="أدوات التصفح السريع">
+    <button type="button" class="floating-actions__share" id="floatingShareBtn" title="مشاركة الموقع مع أصدقائك">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="18" cy="5" r="3"></circle>
+        <circle cx="6" cy="12" r="3"></circle>
+        <circle cx="18" cy="19" r="3"></circle>
+        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+      </svg>
+      <span>مشاركة</span>
+    </button>
+    <a href="#top" class="floating-actions__top" aria-label="العودة إلى أعلى الصفحة" title="العودة إلى الأعلى">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="18 15 12 9 6 15"></polyline>
+      </svg>
+    </a>
+  </div>
+
+  <!-- 6. نافذة تفاصيل المترشح بتصميم "بطاقة مترشح رسمية" (Native Modal Dialog with closedby="any") -->
   <dialog id="candidateDialog" class="campaign-dialog" closedby="any" aria-labelledby="dialogTitle">
     <div class="dialog-header">
       <div>
@@ -652,9 +705,14 @@
       </form>
     </div>
     <div class="dialog-body">
+      <div class="dialog-official-stamp">
+        <span>🗳️ التجمع الوطني الديمقراطي RND • محليات 28 نوفمبر 2026</span>
+        <span class="dialog-official-stamp__seal">✓ القائمة رقم 02</span>
+      </div>
+
       <div class="dialog-candidate-profile">
         <img id="dialogAvatar" src="image/logo.jpg" alt="" width="104" height="104">
-        <div>
+        <div class="dialog-candidate-meta">
           <span id="dialogVoteBadge" class="pill pill--red dialog-vote-badge"></span>
           <h3 id="dialogName" class="dialog-candidate-name"></h3>
           <p id="dialogAge" class="dialog-candidate-age"></p>
@@ -676,6 +734,9 @@
           معاينة الملصق الرسمي
         </button>
       </div>
+    </div>
+    <div class="dialog-national-ribbon" aria-hidden="true">
+      <span>استمرارية ... ثقة ... وإنجاز — القنطرة قبل كل شيء</span>
     </div>
   </dialog>
 
