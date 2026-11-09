@@ -597,7 +597,7 @@ function openCandidateModal(candidateId) {
     const shareData = {
       title: `${c.name} | مترشح رقم ${c.number} - القائمة رقم 02 (RND القنطرة)`,
       text: `ادعموا المترشح ${c.name} (رقم ${c.number}) ضمن قائمة التجمع الوطني الديمقراطي RND رقم 02 لـ ${c.assemblyLabel} - محليات 28 نوفمبر 2026.`,
-      url: window.location.href.split('#')[0] + `#candidates`
+      url: `${window.location.origin}${window.location.pathname}#candidates`
     };
     if (navigator.share) {
       try {
@@ -885,6 +885,14 @@ function initDialogLightDismissFallback() {
     });
   }
 }
+
+// Best-effort iframe hiding only; this is not a replacement for an HTTP frame-ancestors header.
+function applyBestEffortFrameGuard() {
+  if (window.top !== window.self) {
+    document.documentElement.classList.add('is-framed-blocked');
+  }
+}
+applyBestEffortFrameGuard();
 
 document.addEventListener('DOMContentLoaded', () => {
   initSplashScreen();

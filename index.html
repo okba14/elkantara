@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'; upgrade-insecure-requests; require-trusted-types-for 'script';">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests; require-trusted-types-for 'script';">
   <title>التجمع الوطني الديمقراطي RND - القنطرة | انتخب القائمة رقم 02 (محليات 28 نوفمبر 2026)</title>
   <meta name="description" content="البوابة الرسمية للحملة الانتخابية للمجلس الشعبي البلدي والمجلس الشعبي الولائي بالقنطرة - التجمع الوطني الديمقراطي (RND) - القائمة رقم 02. استمرارية... ثقة... وإنجاز. القنطرة قبل كل شيء.">
   <meta name="keywords" content="القنطرة, الانتخابات البلدية القنطرة, التجمع الوطني الديمقراطي, RND, الأرندي القنطرة, القائمة رقم 2, بن حفيظ أحمد تقي الدين, عوبيد أسامة, قيسي شعيب, محليات 28 نوفمبر 2026, elkantra">
@@ -25,9 +25,7 @@
   <meta name="twitter:image" content="https://elkantra.com/image/logo.jpg">
 
   <link rel="icon" type="image/jpeg" href="image/logo.jpg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="preload" href="fonts/cairo-arabic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -89,7 +87,7 @@
       </a>
 
       <nav class="main-nav" id="mainNav" aria-label="التنقل الرئيسي">
-        <a href="#spotlight">أبرز المرشحين</a>
+        <a href="#spotlight">القائمتان الكاملتان</a>
         <a href="#candidates">قوائم المترشحين (33)</a>
         <a href="#program">البرنامج الانتخابي</a>
         <a href="#posters">الملصقات الرسمية</a>
@@ -143,7 +141,7 @@
               <span>تعرّف على المترشحين (33)</span>
             </a>
             <a href="#spotlight" class="btn btn--outline-light">
-              <span>وجوه بارزة من القائمة (البلدي والولائي)</span>
+              <span>القائمتان الكاملتان • البلدي والولائي</span>
             </a>
             <a href="https://www.facebook.com/profile.php?id=61596276712679" target="_blank" rel="noopener noreferrer" class="btn btn--outline-light">
               <span>صفحة الحملة الرسمية ↗</span>
@@ -235,263 +233,77 @@
       </div>
     </section>
 
-    <!-- قسم خاص لتسليط الضوء على وجوه بارزة في القائمتين البلدية والولائية -->
+    <!-- عرض القائمتين كاملتين دون تفضيل مترشحين أفراد -->
     <section class="section" id="spotlight">
       <div class="container">
         <div class="section-header">
-          <span class="section-header__eyebrow">🌟 كفاءات ميدانية وأكاديمية وإطارات في خدمة القنطرة</span>
-          <h2 class="section-header__title">وجوه بارزة من القائمة رقم 02 — البلدي والولائي</h2>
+          <span class="section-header__eyebrow">🗳️ القائمة الانتخابية رقم 02 • القنطرة</span>
+          <h2 class="section-header__title">القائمتان الكاملتان للمجلسين البلدي والولائي</h2>
           <p class="section-header__desc">
-            نخبة تجمع بين الطاقات الشبانية، الكفاءات الأكاديمية الجامعية، والخبرة الإدارية والتسييرية في قطاعات الاتصالات، الصحة، البريد، الجامعة، والموارد المائية لتمثيل مواطني القنطرة في المجلسين الشعبيين البلدي والولائي.
+            حرصًا على الإنصاف بين جميع المترشحين، نعرض القائمتين كاملتين دون إبراز أسماء فردية. اضغط على صورة القائمة لمعاينتها بالحجم الكامل.
           </p>
         </div>
 
-        <div class="spotlight-trio-grid">
-          <!-- البطاقة 1 (الوسطى على الشاشات الكبيرة والأولى في الترتيب التسلسلي): بن حفيظ أحمد تقي الدين — رقم 08 (المجلس الشعبي البلدي) -->
-          <article class="spotlight-card spotlight-card--centerpiece">
+        <div class="spotlight-lists-grid">
+          <article class="spotlight-card spotlight-list-card" aria-labelledby="apcListTitle">
             <div class="spotlight-card__top-bar">
               <span class="spotlight-card__assembly-tag">🏛️ المجلس الشعبي البلدي • القنطرة</span>
-              <span class="spotlight-card__rank-medal">★ رقم 08</span>
+              <span class="spotlight-card__rank-medal">22 مترشحًا</span>
             </div>
 
             <div class="spotlight-card__stage">
-              <div class="poster-frame poster-frame--main" data-lightbox-src="image/869688791_1135728298852832_4416104918847094857_n.jpg" data-lightbox-caption="الملصق الانتخابي الرسمي — بن حفيظ أحمد تقي الدين (المجلس الشعبي البلدي • رقم 08)">
-                <img src="image/869688791_1135728298852832_4416104918847094857_n.jpg" alt="ملصق المترشح بن حفيظ أحمد تقي الدين - انتخابات المجلس الشعبي البلدي القنطرة رقم 08" loading="lazy" width="424" height="632">
-                <span class="poster-frame__zoom">🔍 تكبير الملصق</span>
+              <div class="poster-frame poster-frame--main" data-lightbox-src="image/886730799_1838982523963233_3743914913683221876_n.jpg" data-lightbox-caption="القائمة الاسمية والمصورة الكاملة لمترشحي المجلس الشعبي البلدي بالقنطرة — 22 مترشحًا">
+                <img src="image/886730799_1838982523963233_3743914913683221876_n.jpg" alt="القائمة الكاملة لمترشحي المجلس الشعبي البلدي بالقنطرة، 22 مترشحًا" loading="lazy" width="1142" height="1600">
+                <span class="poster-frame__zoom">🔍 تكبير القائمة</span>
               </div>
-              <button type="button" class="spotlight-card__alt-poster" data-lightbox-src="image/gggg.jpg" data-lightbox-caption="بطاقة المترشح بن حفيظ أحمد تقي الدين (33 سنة) — إطار في اتصالات الجزائر (رقم 08)">
-                <img src="image/gggg.jpg" alt="بطاقة المترشح بن حفيظ أحمد رقم 08" loading="lazy" width="64" height="96">
-                <span>بطاقة المترشح 2</span>
-              </button>
             </div>
 
             <div class="spotlight-card__info">
               <div class="spotlight-card__badges">
                 <span class="pill pill--red">القائمة رقم 02</span>
-                <span class="pill pill--gold">ترتيب البلدي: رقم 08</span>
-                <span class="pill pill--teal">33 سنة</span>
+                <span class="pill pill--gold">المجلس الشعبي البلدي</span>
+                <span class="pill pill--teal">22 مترشحًا</span>
               </div>
 
-              <h3 class="spotlight-card__name">بن حفيظ أحمد تقي الدين</h3>
-              <p class="spotlight-card__role">تقني سامي في الاتصال اللاسلكي • إطار في اتصالات الجزائر</p>
-
-              <p class="spotlight-card__bio">
-                ابن مدينة القنطرة البار، يجمع بين الخبرة التقنية والميدانية في قطاع الاتصالات والالتزام الفعلي بقضايا الشباب والتنمية المحلية. يترشح في القائمة رقم <strong>02</strong> للمجلس الشعبي البلدي حاملاً رؤية عصرية لتحديث المرفق العام، تسريع الرقمنة، وتحسين الإطار المعيشي للمواطن.
-              </p>
-
-              <ul class="spotlight-points">
-                <li>بيئة نظيفة وإطار عيش أفضل</li>
-                <li>استثمار وفرص عمل للشباب</li>
-                <li>بنية تحتية وشبكات متطورة</li>
-                <li>تنمية محلية وإدارة رقمية قريبة</li>
-              </ul>
+              <h3 class="spotlight-card__name" id="apcListTitle">القائمة الكاملة للمجلس الشعبي البلدي</h3>
+              <p class="spotlight-card__role">جميع مترشحي بلدية القنطرة ضمن القائمة رقم 02</p>
+              <p class="spotlight-card__bio">تضم الصورة القائمة الاسمية والمصورة كاملة، مرتبة من المترشح رقم 01 إلى رقم 22.</p>
 
               <div class="spotlight-ctas">
-                <button type="button" class="btn btn--red" id="openAhmedModalBtn" data-open-candidate="apc-08">
-                  <span>بطاقة المترشح رقم 08 ومشاركتها</span>
-                </button>
-                <button type="button" class="btn btn--outline-light" data-lightbox-src="image/869688791_1135728298852832_4416104918847094857_n.jpg" data-lightbox-caption="الملصق الانتخابي الرسمي — بن حفيظ أحمد تقي الدين (القائمة رقم 02 • رقم 08)">
-                  <span>معاينة الملصق الكامل 🔍</span>
+                <button type="button" class="btn btn--red" data-lightbox-src="image/886730799_1838982523963233_3743914913683221876_n.jpg" data-lightbox-caption="القائمة الاسمية والمصورة الكاملة لمترشحي المجلس الشعبي البلدي بالقنطرة — 22 مترشحًا">
+                  <span>معاينة القائمة البلدية كاملة</span>
                 </button>
               </div>
             </div>
           </article>
 
-          <!-- البطاقة 2: بنارة سماح — رقم 08 (المجلس الشعبي الولائي) -->
-          <article class="spotlight-card spotlight-card--bennara">
+          <article class="spotlight-card spotlight-list-card" aria-labelledby="apwListTitle">
             <div class="spotlight-card__top-bar">
               <span class="spotlight-card__assembly-tag">🏛️ المجلس الشعبي الولائي • القنطرة</span>
-              <span class="spotlight-card__rank-medal">★ رقم 08</span>
+              <span class="spotlight-card__rank-medal">11 مترشحًا</span>
             </div>
 
             <div class="spotlight-card__stage">
-              <div class="poster-frame poster-frame--main" data-lightbox-src="image/bennara-samah.jpg" data-lightbox-caption="الملصق الانتخابي الرسمي — بنارة سماح (المجلس الشعبي الولائي • القائمة رقم 02 • رقم 08)">
-                <img src="image/bennara-samah.jpg" alt="ملصق المترشحة بنارة سماح - انتخابات المجلس الشعبي الولائي ولاية القنطرة" loading="lazy" width="480" height="480">
-                <span class="poster-frame__zoom">🔍 تكبير الملصق</span>
+              <div class="poster-frame poster-frame--main" data-lightbox-src="image/894059576_122098363425542557_694586125396583683_n.jpg" data-lightbox-caption="القائمة الاسمية والمصورة الكاملة لمترشحي المجلس الشعبي الولائي بالقنطرة — 11 مترشحًا">
+                <img src="image/894059576_122098363425542557_694586125396583683_n.jpg" alt="القائمة الكاملة لمترشحي المجلس الشعبي الولائي بالقنطرة، 11 مترشحًا" loading="lazy" width="1142" height="1600">
+                <span class="poster-frame__zoom">🔍 تكبير القائمة</span>
               </div>
-              <button type="button" class="spotlight-card__alt-poster" data-lightbox-src="image/894059576_122098363425542557_694586125396583683_n.jpg" data-lightbox-caption="قائمة التجمع الوطني الديمقراطي للمجلس الشعبي الولائي القنطرة (11 مترشحاً)">
-                <img src="image/candidates/apw-08.jpg" alt="صورة المترشحة بنارة سماح" loading="lazy" width="64" height="64">
-                <span>قائمة الولائي</span>
-              </button>
             </div>
 
             <div class="spotlight-card__info">
               <div class="spotlight-card__badges">
                 <span class="pill pill--red">القائمة رقم 02</span>
-                <span class="pill pill--gold">ترتيب الولائي: رقم 08</span>
-                <span class="pill pill--teal">خبرة +12 سنة</span>
+                <span class="pill pill--gold">المجلس الشعبي الولائي</span>
+                <span class="pill pill--teal">11 مترشحًا</span>
               </div>
 
-              <h3 class="spotlight-card__name">بنارة سماح</h3>
-              <p class="spotlight-card__role">قابلة رئيسية • عضو مكتب التكوين بالمؤسسة العمومية للصحة الجوارية بالقنطرة</p>
-
-              <p class="spotlight-card__bio">
-                كفاءة صحية وميدانية متميزة بخبرة مهنية تتجاوز 12 سنة في خدمة صحة الأم والطفل والتكوين المتواصل بقطاع الصحة في القنطرة. تترشح في القائمة رقم <strong>02</strong> للمجلس الشعبي الولائي للدفاع عن ترقية الهياكل الصحية، استلام المستشفى الجديد، وتطوير العيادات الجوارية بالولاية.
-              </p>
-
-              <ul class="spotlight-points">
-                <li>ترقية خدمات صحة الأم والطفل بالولاية</li>
-                <li>دعم التكوين الطبي وشبه الطبي المتواصل</li>
-                <li>متابعة إنجاز وتجهيز الهياكل والعيادات الصحية</li>
-                <li>حضور فاعل للمرأة وقطاع الصحة بالمجلس الولائي</li>
-              </ul>
+              <h3 class="spotlight-card__name" id="apwListTitle">القائمة الكاملة للمجلس الشعبي الولائي</h3>
+              <p class="spotlight-card__role">جميع مترشحي المجلس الشعبي الولائي بالقنطرة ضمن القائمة رقم 02</p>
+              <p class="spotlight-card__bio">تضم الصورة القائمة الاسمية والمصورة كاملة، مرتبة من المترشح رقم 01 إلى رقم 11.</p>
 
               <div class="spotlight-ctas">
-                <button type="button" class="btn btn--red" data-open-candidate="apw-08">
-                  <span>بطاقة المترشحة رقم 08 ومشاركتها</span>
-                </button>
-                <button type="button" class="btn btn--outline-light" data-lightbox-src="image/bennara-samah.jpg" data-lightbox-caption="الملصق الانتخابي الرسمي — بنارة سماح (المجلس الشعبي الولائي • القائمة رقم 02)">
-                  <span>معاينة الملصق الكامل 🔍</span>
-                </button>
-              </div>
-            </div>
-          </article>
-
-          <!-- البطاقة 3: قيسي شعيب — رقم 01 (المجلس الشعبي الولائي) -->
-          <article class="spotlight-card spotlight-card--kissi">
-            <div class="spotlight-card__top-bar">
-              <span class="spotlight-card__assembly-tag">🏛️ المجلس الشعبي الولائي • القنطرة</span>
-              <span class="spotlight-card__rank-medal">★ رقم 01</span>
-            </div>
-
-            <div class="spotlight-card__stage">
-              <div class="poster-frame poster-frame--main" data-lightbox-src="image/kissi-chouaib.jpg" data-lightbox-caption="الملصق الانتخابي الرسمي — قيسي شعيب (متصدر قائمة المجلس الشعبي الولائي • رقم 01)">
-                <img src="image/kissi-chouaib.jpg" alt="ملصق المترشح قيسي شعيب - انتخابات المجلس الشعبي الولائي القنطرة رقم 01" loading="lazy" width="526" height="790">
-                <span class="poster-frame__zoom">🔍 تكبير الملصق</span>
-              </div>
-              <button type="button" class="spotlight-card__alt-poster" data-lightbox-src="image/894059576_122098363425542557_694586125396583683_n.jpg" data-lightbox-caption="قائمة التجمع الوطني الديمقراطي للمجلس الشعبي الولائي القنطرة (11 مترشحاً)">
-                <img src="image/candidates/apw-01.jpg" alt="صورة المترشح قيسي شعيب" loading="lazy" width="64" height="64">
-                <span>قائمة الولائي</span>
-              </button>
-            </div>
-
-            <div class="spotlight-card__info">
-              <div class="spotlight-card__badges">
-                <span class="pill pill--red">القائمة رقم 02</span>
-                <span class="pill pill--gold">متصدر الولائي: رقم 01</span>
-                <span class="pill pill--teal">60 سنة</span>
-              </div>
-
-              <h3 class="spotlight-card__name">قيسي شعيب</h3>
-              <p class="spotlight-card__role">رئيس مؤسسة مكتب بريد القنطرة • إطار مسيّر بالمرفق العام</p>
-
-              <p class="spotlight-card__bio">
-                قامة إدارية وتسييرية مشهود لها بالكفاءة والنزاهة وحسن الاستقبال في خدمة مواطني القنطرة على رأس مؤسسة مكتب البريد. يتصدر القائمة رقم <strong>02</strong> للمجلس الشعبي الولائي (رقم 01) لتكريس خبرته الميدانية في تقريب المرافق العمومية، توسيع الشبكة البريدية، ودعم مسار ترقية ولاية القنطرة.
-              </p>
-
-              <ul class="spotlight-points">
-                <li>تقريب وعصرنة المرافق والخدمات العمومية</li>
-                <li>توسيع المكاتب البريدية بالأحياء السكنية الكبرى</li>
-                <li>خبرة إدارية رصينة في التسيير العمومي</li>
-                <li>المرافعة الفاعلة عن المشاريع الكبرى للولاية</li>
-              </ul>
-
-              <div class="spotlight-ctas">
-                <button type="button" class="btn btn--red" data-open-candidate="apw-01">
-                  <span>بطاقة المترشح رقم 01 ومشاركتها</span>
-                </button>
-                <button type="button" class="btn btn--outline-light" data-lightbox-src="image/kissi-chouaib.jpg" data-lightbox-caption="الملصق الانتخابي الرسمي — قيسي شعيب (المجلس الشعبي الولائي • رقم 01)">
-                  <span>معاينة الملصق الكامل 🔍</span>
-                </button>
-              </div>
-            </div>
-          </article>
-
-          <!-- البطاقة 4: حمدان محمد الطيب — رقم 03 (المجلس الشعبي الولائي) -->
-          <article class="spotlight-card spotlight-card--hamdane">
-            <div class="spotlight-card__top-bar">
-              <span class="spotlight-card__assembly-tag">🏛️ المجلس الشعبي الولائي • القنطرة</span>
-              <span class="spotlight-card__rank-medal">★ رقم 03</span>
-            </div>
-
-            <div class="spotlight-card__stage">
-              <div class="poster-frame poster-frame--main" data-lightbox-src="image/hamdane-mohamed-tayeb.jpg" data-lightbox-caption="الملصق الانتخابي الرسمي — بروفيسور حمدان محمد الطيب (المجلس الشعبي الولائي • القائمة رقم 02 • رقم 03)">
-                <img src="image/hamdane-mohamed-tayeb.jpg" alt="ملصق المترشح حمدان محمد الطيب - انتخابات المجلس الشعبي الولائي القنطرة رقم 03" loading="lazy" width="512" height="512">
-                <span class="poster-frame__zoom">🔍 تكبير الملصق</span>
-              </div>
-              <button type="button" class="spotlight-card__alt-poster" data-lightbox-src="image/894059576_122098363425542557_694586125396583683_n.jpg" data-lightbox-caption="قائمة التجمع الوطني الديمقراطي للمجلس الشعبي الولائي القنطرة (11 مترشحاً)">
-                <img src="image/candidates/apw-03.jpg" alt="صورة المترشح حمدان محمد الطيب" loading="lazy" width="64" height="64">
-                <span>قائمة الولائي</span>
-              </button>
-            </div>
-
-            <div class="spotlight-card__info">
-              <div class="spotlight-card__badges">
-                <span class="pill pill--red">القائمة رقم 02</span>
-                <span class="pill pill--gold">ترتيب الولائي: رقم 03</span>
-                <span class="pill pill--teal">42 سنة</span>
-              </div>
-
-              <h3 class="spotlight-card__name">حمدان محمد الطيب</h3>
-              <p class="spotlight-card__role">بروفيسور في العلوم السياسية والعلاقات الدولية • أستاذ بجامعة محمد خيضر بسكرة</p>
-
-              <p class="spotlight-card__bio">
-                قامة أكاديمية وإعلامية بارزة، بروفيسور في العلوم السياسية والعلاقات الدولية وحاصل على ماجيستير تخصص دراسات مغاربية، باحث في أكاديمية العلوم والدراسات الإستشرافية، وإطار سابق في مديرية التشغيل. يترشح في القائمة رقم <strong>02</strong> للمجلس الشعبي الولائي تحت شعار: «ثقتكم مسؤولية، ومواصلة المسيرة عهد نلتزم به».
-              </p>
-
-              <ul class="spotlight-points">
-                <li>بروفيسور في العلوم السياسية والعلاقات الدولية وماجيستير دراسات مغاربية</li>
-                <li>أستاذ بجامعة محمد خيضر بسكرة وباحث في أكاديمية العلوم والدراسات الإستشرافية</li>
-                <li>إطار سابق في مديرية التشغيل لولاية بسكرة</li>
-                <li>كاتب صحفي وناشط جمعوي فاعل بالقنطرة</li>
-              </ul>
-
-              <div class="spotlight-ctas">
-                <button type="button" class="btn btn--red" data-open-candidate="apw-03">
-                  <span>بطاقة المترشح رقم 03 ومشاركتها</span>
-                </button>
-                <button type="button" class="btn btn--outline-light" data-lightbox-src="image/hamdane-mohamed-tayeb.jpg" data-lightbox-caption="الملصق الانتخابي الرسمي — بروفيسور حمدان محمد الطيب (المجلس الشعبي الولائي • رقم 03)">
-                  <span>معاينة الملصق الكامل 🔍</span>
-                </button>
-              </div>
-            </div>
-          </article>
-
-          <!-- البطاقة 5: أسامة عوبيد — رقم 01 (المجلس الشعبي البلدي) -->
-          <article class="spotlight-card spotlight-card--oubid">
-            <div class="spotlight-card__top-bar">
-              <span class="spotlight-card__assembly-tag">🏛️ المجلس الشعبي البلدي • القنطرة</span>
-              <span class="spotlight-card__rank-medal">★ رقم 01</span>
-            </div>
-
-            <div class="spotlight-card__stage">
-              <div class="poster-frame poster-frame--main" data-lightbox-src="image/oubid-oussama.jpg" data-lightbox-caption="الملصق الانتخابي الرسمي — أسامة عوبيد (متصدر قائمة المجلس الشعبي البلدي • القائمة رقم 02 • رقم 01)">
-                <img src="image/oubid-oussama.jpg" alt="ملصق المترشح أسامة عوبيد - انتخابات المجلس الشعبي البلدي القنطرة رقم 01" loading="lazy" width="500" height="750">
-                <span class="poster-frame__zoom">🔍 تكبير الملصق</span>
-              </div>
-              <button type="button" class="spotlight-card__alt-poster" data-lightbox-src="image/886730799_1838982523963233_3743914913683221876_n.jpg" data-lightbox-caption="القائمة الاسمية والمصورة لمترشحي المجلس الشعبي البلدي القنطرة (22 مترشحاً)">
-                <img src="image/candidates/apc-01.jpg" alt="صورة المترشح أسامة عوبيد" loading="lazy" width="64" height="64">
-                <span>قائمة البلدي</span>
-              </button>
-            </div>
-
-            <div class="spotlight-card__info">
-              <div class="spotlight-card__badges">
-                <span class="pill pill--red">القائمة رقم 02</span>
-                <span class="pill pill--gold">متصدر البلدي: رقم 01</span>
-                <span class="pill pill--teal">38 سنة</span>
-              </div>
-
-              <h3 class="spotlight-card__name">أسامة عوبيد</h3>
-              <p class="spotlight-card__role">مدير وحدة الجزائرية للمياه القنطرة • نائب رئيس المجلس الشعبي البلدي (2021–2025)</p>
-
-              <p class="spotlight-card__bio">
-                إطار مسيّر وكفاءة أكاديمية وميدانية شابة، حاصل على ماجيستير في العلوم السياسية والعلاقات الدولية تخصص إدارة الجماعات المحلية وطالب دكتوراه في التخصص ذاته. يشغل منصب مدير وحدة الجزائرية للمياه بالقنطرة، ويتصدر القائمة رقم <strong>02</strong> للمجلس الشعبي البلدي لمواصلة مسيرة الإنجاز والتنمية.
-              </p>
-
-              <ul class="spotlight-points">
-                <li>ماجيستير في العلوم السياسية والعلاقات الدولية تخصص إدارة الجماعات المحلية</li>
-                <li>طالب دكتوراه في العلوم السياسية والعلاقات الدولية</li>
-                <li>نائب رئيس المجلس الشعبي البلدي من ديسمبر 2021 إلى ديسمبر 2025</li>
-                <li>مدير وحدة الجزائرية للمياه القنطرة</li>
-              </ul>
-
-              <div class="spotlight-ctas">
-                <button type="button" class="btn btn--red" data-open-candidate="apc-01">
-                  <span>بطاقة المترشح رقم 01 ومشاركتها</span>
-                </button>
-                <button type="button" class="btn btn--outline-light" data-lightbox-src="image/oubid-oussama.jpg" data-lightbox-caption="الملصق الانتخابي الرسمي — أسامة عوبيد (المجلس الشعبي البلدي • رقم 01)">
-                  <span>معاينة الملصق الكامل 🔍</span>
+                <button type="button" class="btn btn--red" data-lightbox-src="image/894059576_122098363425542557_694586125396583683_n.jpg" data-lightbox-caption="القائمة الاسمية والمصورة الكاملة لمترشحي المجلس الشعبي الولائي بالقنطرة — 11 مترشحًا">
+                  <span>معاينة القائمة الولائية كاملة</span>
                 </button>
               </div>
             </div>

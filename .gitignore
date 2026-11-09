@@ -1,0 +1,9 @@
+# Local agent/task work, browser profiles, and generated audit artifacts; not site content
+/.work/
+/.manus/
+/outputs/
+
+# Operating-system metadata
+.DS_Store
+Thumbs.db
+Desktop.ini
