@@ -331,6 +331,18 @@ button, input, select {
   background: rgba(255, 255, 255, 0.22);
 }
 
+.btn--outline-dark {
+  background: #ffffff;
+  color: var(--rnd-teal-900);
+  border: 1.5px solid var(--rnd-teal-600);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn--outline-dark:hover {
+  background: var(--rnd-teal-50);
+  border-color: var(--rnd-teal-700);
+}
+
 .btn--fb {
   background: #1877F2;
   color: #fff;
@@ -918,6 +930,179 @@ button, input, select {
   font-size: 0.88rem;
 }
 
+/* ==========================================================================
+   Parliamentarian Endorsement Spotlight (النائب البرلماني: حفناوي عقبة)
+   ========================================================================== */
+.section--parliamentarian {
+  background: linear-gradient(180deg, #f6faf9 0%, #edf6f5 50%, #f6faf9 100%);
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.mp-spotlight-card {
+  background: linear-gradient(135deg, var(--rnd-teal-950) 0%, #033234 45%, #064749 100%);
+  border-radius: var(--radius-xl);
+  border: 2px solid rgba(212, 164, 55, 0.45);
+  box-shadow: 0 20px 50px rgba(2, 35, 36, 0.22);
+  padding: clamp(1.75rem, 3.8vw, 3rem);
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(1.75rem, 3.5vw, 3rem);
+  align-items: center;
+  position: relative;
+}
+
+.mp-spotlight-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--rnd-red-600), var(--rnd-gold-400), var(--rnd-teal-500));
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+
+.mp-spotlight-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+  color: #ffffff;
+}
+
+.mp-badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  align-items: center;
+}
+
+.mp-quote-box {
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  border-right: 4px solid var(--rnd-gold-400);
+  border-radius: var(--radius-md);
+  padding: 1.5rem 1.65rem 1.5rem 2.25rem;
+  backdrop-filter: blur(8px);
+}
+
+.mp-quote-icon {
+  position: absolute;
+  top: 1rem;
+  left: 1.25rem;
+  color: rgba(236, 195, 92, 0.18);
+  pointer-events: none;
+}
+
+.mp-quote-text {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: clamp(1.02rem, 1.35vw, 1.14rem);
+  line-height: 1.85;
+  color: #f1f8f8;
+}
+
+.mp-quote-text strong {
+  color: var(--rnd-gold-400);
+  font-weight: 800;
+}
+
+.mp-callout-pill {
+  background: linear-gradient(135deg, rgba(214, 24, 38, 0.28), rgba(214, 24, 38, 0.16));
+  border: 1.5px solid rgba(214, 24, 38, 0.65);
+  border-radius: var(--radius-full);
+  padding: 0.85rem 1.5rem;
+  font-weight: 900;
+  font-size: 1.05rem;
+  color: #ffffff;
+  text-align: center;
+  box-shadow: 0 4px 18px rgba(214, 24, 38, 0.2);
+}
+
+.mp-signature-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.mp-signature-name {
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: var(--rnd-gold-400);
+}
+
+.mp-signature-role {
+  font-size: 0.88rem;
+  color: var(--text-light);
+  font-weight: 600;
+}
+
+.mp-signature-seal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(236, 195, 92, 0.12);
+  border: 1px dashed var(--rnd-gold-400);
+  padding: 0.45rem 0.95rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--rnd-gold-400);
+}
+
+.mp-signature-seal__badge {
+  font-size: 0.7rem;
+  color: #ffffff;
+  opacity: 0.9;
+}
+
+.mp-spotlight-card__visual {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.poster-frame--mp {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 2px solid rgba(236, 195, 92, 0.45);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  background: #000;
+  aspect-ratio: 1024 / 723;
+}
+
+.poster-frame--mp img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.poster-frame--mp:hover img {
+  transform: scale(1.03);
+}
+
+.mp-visual-actions {
+  display: flex;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.mp-visual-actions .btn {
+  flex: 1;
+  min-width: 150px;
+  justify-content: center;
+  font-size: 0.88rem;
+  padding: 0.65rem 1rem;
+}
+
 /* Candidates Directory Controls */
 .directory-controls {
   background: var(--surface-card);
@@ -1321,6 +1506,86 @@ button, input, select {
   border-radius: var(--radius-full);
   box-shadow: 0 8px 22px rgba(214, 24, 38, 0.25);
   margin-top: 0.4rem;
+}
+
+/* ==========================================================================
+   Program Aesthetic Poster Showcase
+   ========================================================================== */
+.program-poster-banner {
+  background: linear-gradient(135deg, #ffffff 0%, var(--rnd-teal-50) 60%, #eaf4f3 100%);
+  border: 2px solid rgba(13, 124, 128, 0.28);
+  border-radius: var(--radius-xl);
+  padding: clamp(1.5rem, 3.2vw, 2.5rem);
+  box-shadow: var(--shadow-md);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  align-items: center;
+  margin-bottom: 2.75rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.program-poster-banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--rnd-teal-600), var(--rnd-gold-400), var(--rnd-red-600));
+}
+
+.program-poster-banner__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.program-poster-banner__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.program-poster-banner__title {
+  font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+  color: var(--rnd-teal-950);
+  line-height: 1.35;
+}
+
+.program-poster-banner__desc {
+  color: var(--text-muted);
+  font-size: 0.98rem;
+  line-height: 1.75;
+}
+
+.program-poster-banner__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 0.4rem;
+}
+
+.poster-frame--program {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 2px solid var(--rnd-teal-600);
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  background: var(--rnd-teal-950);
+  aspect-ratio: 1024 / 723;
+}
+
+.poster-frame--program img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.poster-frame--program:hover img {
+  transform: scale(1.03);
 }
 
 .program-vision-card {
@@ -2628,6 +2893,50 @@ dialog::backdrop {
   }
 
   .dialog-actions-row .btn {
+    width: 100%;
+  }
+
+  .mp-spotlight-card {
+    grid-template-columns: 1fr;
+    padding: 1.35rem 1.15rem;
+    gap: 1.5rem;
+  }
+
+  .mp-quote-box {
+    padding: 1.25rem 1rem 1.25rem 1.25rem;
+  }
+
+  .mp-quote-text {
+    font-size: 0.96rem;
+    line-height: 1.7;
+  }
+
+  .mp-callout-pill {
+    font-size: 0.92rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .mp-signature-block {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .mp-visual-actions {
+    flex-direction: column;
+  }
+
+  .program-poster-banner {
+    grid-template-columns: 1fr;
+    padding: 1.25rem;
+    gap: 1.35rem;
+  }
+
+  .program-poster-banner__actions {
+    flex-direction: column;
+  }
+
+  .program-poster-banner__actions .btn {
     width: 100%;
   }
 
