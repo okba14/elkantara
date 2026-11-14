@@ -205,6 +205,14 @@ button, input, select {
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border-subtle);
   box-shadow: 0 4px 20px rgba(2, 35, 36, 0.05);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.site-header.is-scrolled {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px) saturate(165%);
+  box-shadow: 0 10px 32px rgba(2, 35, 36, 0.12);
+  border-bottom-color: rgba(13, 124, 128, 0.22);
 }
 
 .site-header__inner {
@@ -213,6 +221,11 @@ button, input, select {
   justify-content: space-between;
   padding-block: 0.75rem;
   gap: 1rem;
+  transition: padding-block 0.3s ease;
+}
+
+.site-header.is-scrolled .site-header__inner {
+  padding-block: 0.48rem;
 }
 
 .brand {
@@ -228,6 +241,11 @@ button, input, select {
   object-fit: cover;
   border: 2px solid var(--rnd-teal-600);
   box-shadow: 0 3px 10px rgba(9, 99, 102, 0.25);
+  transition: transform 0.3s ease;
+}
+
+.site-header.is-scrolled .brand__logo {
+  transform: scale(0.88);
 }
 
 .brand__text {
@@ -271,13 +289,19 @@ button, input, select {
   font-weight: 700;
   font-size: 0.92rem;
   color: var(--rnd-teal-900);
-  transition: background-color 0.2s ease, color 0.2s ease;
+  position: relative;
+  transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
 }
 
-.main-nav a:hover,
-.main-nav a.is-active {
+.main-nav a:hover {
   background-color: var(--rnd-teal-100);
   color: var(--rnd-teal-800);
+}
+
+.main-nav a.is-active {
+  background: linear-gradient(135deg, var(--rnd-teal-800), var(--rnd-teal-600));
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(9, 99, 102, 0.28);
 }
 
 .header-actions {
@@ -2947,5 +2971,194 @@ dialog::backdrop {
   .floating-actions {
     bottom: 0.9rem;
     left: 0.9rem;
+  }
+}
+
+
+/* ==========================================================================
+   8. Roman Bridge Arch Dividers (فواصل أقواس جسر القنطرة الروماني)
+   ========================================================================== */
+.arch-divider {
+  width: 100%;
+  line-height: 0;
+  overflow: hidden;
+  pointer-events: none;
+  margin-top: -1px;
+}
+
+.arch-divider svg {
+  display: block;
+  width: 100%;
+  height: clamp(28px, 4vw, 52px);
+}
+
+.arch-divider--to-mp {
+  background: var(--surface-bg);
+}
+
+.arch-divider--to-mp svg path {
+  fill: #f6faf9;
+}
+
+.arch-divider--to-alt {
+  background: var(--surface-bg);
+}
+
+.arch-divider--to-alt svg path {
+  fill: #ecf6f6;
+}
+
+.arch-divider--from-alt {
+  background: #f6faf9;
+}
+
+.arch-divider--from-alt svg path {
+  fill: var(--surface-bg);
+}
+
+/* ==========================================================================
+   9. Animated Ballot X-Mark Preview (محاكاة ورقة التصويت وعلامة X)
+   ========================================================================== */
+.ballot-demo {
+  margin-top: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  background: linear-gradient(135deg, #ffffff 0%, var(--rnd-teal-50) 100%);
+  border: 1.5px dashed rgba(9, 99, 102, 0.35);
+  border-radius: var(--radius-md);
+  padding: 0.65rem 0.9rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 6px 16px rgba(2, 35, 36, 0.06);
+}
+
+.ballot-demo__num {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  background: var(--rnd-teal-900);
+  color: var(--rnd-gold-400);
+  font-weight: 900;
+  font-size: 0.95rem;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.ballot-demo__label {
+  font-size: 0.84rem;
+  font-weight: 800;
+  color: var(--rnd-teal-950);
+  text-align: right;
+  flex: 1;
+}
+
+.ballot-demo__box {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: #ffffff;
+  border: 2px solid var(--rnd-teal-800);
+  display: grid;
+  place-items: center;
+  color: var(--rnd-red-600);
+  flex-shrink: 0;
+  box-shadow: inset 0 2px 5px rgba(2, 35, 36, 0.08);
+}
+
+.ballot-demo__stroke {
+  stroke-dasharray: 32;
+  stroke-dashoffset: 32;
+}
+
+.step-card--ballot.is-visible .ballot-demo__stroke--1 {
+  animation: ballot-draw-x 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.35s forwards;
+}
+
+.step-card--ballot.is-visible .ballot-demo__stroke--2 {
+  animation: ballot-draw-x 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.7s forwards;
+}
+
+.step-card--ballot:hover .ballot-demo__box {
+  border-color: var(--rnd-red-600);
+  box-shadow: 0 0 0 4px rgba(214, 24, 38, 0.14);
+}
+
+@keyframes ballot-draw-x {
+  from {
+    stroke-dashoffset: 32;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ballot-demo__stroke {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ==========================================================================
+   10. Stat Card Pulse & 3D Card Tilt + Glare (تأثير الإمالة واللمعة)
+   ========================================================================== */
+.stat-card--highlight .stat-card__icon {
+  position: relative;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .stat-card--highlight .stat-card__icon::after {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border-radius: inherit;
+    border: 2px solid rgba(214, 24, 38, 0.45);
+    animation: stat-pulse-ring 2.8s cubic-bezier(0.2, 0.6, 0.35, 1) infinite;
+    pointer-events: none;
+  }
+
+  @keyframes stat-pulse-ring {
+    0% {
+      transform: scale(0.95);
+      opacity: 0.85;
+    }
+    70%, 100% {
+      transform: scale(1.22);
+      opacity: 0;
+    }
+  }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .is-tilt-ready {
+    position: relative;
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.32s ease;
+  }
+
+  .tilt-glare {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+      circle 260px at var(--gx, 50%) var(--gy, 50%),
+      rgba(255, 255, 255, 0.22),
+      rgba(236, 195, 92, 0.08) 38%,
+      transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 3;
+  }
+
+  .is-tilt-ready.is-tilting {
+    transition: transform 0.08s linear, box-shadow 0.2s ease;
+    transform: perspective(950px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(-4px);
+  }
+
+  .is-tilt-ready.is-tilting > .tilt-glare {
+    opacity: 1;
   }
 }

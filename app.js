@@ -886,6 +886,166 @@ function initDialogLightDismissFallback() {
   }
 }
 
+// 8. Smart Glass Header & Active Section Spy
+function initSmartHeader() {
+  const header = document.querySelector('.site-header');
+  if (header) {
+    const toggleScrolled = () => {
+      header.classList.toggle('is-scrolled', window.scrollY > 40);
+    };
+    toggleScrolled();
+    window.addEventListener('scroll', toggleScrolled, { passive: true });
+  }
+
+  const navLinks = Array.from(document.querySelectorAll('.main-nav a[href^="#"]'));
+  if (!navLinks.length || !('IntersectionObserver' in window)) return;
+
+  const sectionMap = new Map();
+  navLinks.forEach((link) => {
+    const id = link.getAttribute('href').slice(1);
+    const section = document.getElementById(id);
+    if (section) sectionMap.set(section, link);
+  });
+
+  if (!sectionMap.size) return;
+
+  const spyObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const activeLink = sectionMap.get(entry.target);
+        if (!activeLink) return;
+        navLinks.forEach((l) => l.classList.remove('is-active'));
+        activeLink.classList.add('is-active');
+      });
+    },
+    { rootMargin: '-28% 0px -56% 0px', threshold: 0.01 }
+  );
+
+  sectionMap.forEach((_, section) => spyObserver.observe(section));
+}
+
+// 9. Animated Stats Counters
+function initAnimatedCounters() {
+  const counters = document.querySelectorAll('[data-count-target]');
+  if (!counters.length) return;
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const formatVal = (el, val) => {
+    const pad = parseInt(el.getAttribute('data-count-pad') || '0', 10);
+    const str = String(Math.round(val));
+    return pad > 0 ? str.padStart(pad, '0') : str;
+  };
+
+  const animateCounter = (el) => {
+    const target = parseInt(el.getAttribute('data-count-target'), 10);
+    if (Number.isNaN(target)) return;
+    if (reducedMotion) {
+      el.textContent = formatVal(el, target);
+      return;
+    }
+
+    const duration = 850;
+    const start = performance.now();
+    const step = (now) => {
+      const progress = Math.min(1, (now - start) / duration);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = formatVal(el, target * eased);
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        el.textContent = formatVal(el, target);
+      }
+    };
+    requestAnimationFrame(step);
+  };
+
+  if (!('IntersectionObserver' in window)) {
+    counters.forEach(animateCounter);
+    return;
+  }
+
+  const strip = document.querySelector('.stats-strip');
+  if (!strip) {
+    counters.forEach(animateCounter);
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          counters.forEach(animateCounter);
+          observer.disconnect();
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  observer.observe(strip);
+}
+
+// 10. Subtle 3D Card Tilt & Glare (Desktop fine-pointer only)
+function initCardTiltGlare() {
+  const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!canHover || reducedMotion) return;
+
+  const selector = '.mp-spotlight-card, .program-poster-banner, .spotlight-card, .gallery-card, .candidate-card, .step-card';
+
+  const ensureGlare = (card) => {
+    if (!card.classList.contains('is-tilt-ready')) {
+      card.classList.add('is-tilt-ready');
+      if (!card.querySelector(':scope > .tilt-glare')) {
+        const glare = document.createElement('span');
+        glare.className = 'tilt-glare';
+        glare.setAttribute('aria-hidden', 'true');
+        card.appendChild(glare);
+      }
+    }
+  };
+
+  let activeCard = null;
+
+  document.addEventListener('pointermove', (e) => {
+    const card = e.target.closest(selector);
+    if (activeCard && activeCard !== card) {
+      activeCard.classList.remove('is-tilting');
+      activeCard.style.setProperty('--rx', '0deg');
+      activeCard.style.setProperty('--ry', '0deg');
+      activeCard = null;
+    }
+    if (!card) return;
+
+    ensureGlare(card);
+    activeCard = card;
+    card.classList.add('is-tilting');
+
+    const rect = card.getBoundingClientRect();
+    const px = Math.min(1, Math.max(0, (e.clientX - rect.left) / rect.width));
+    const py = Math.min(1, Math.max(0, (e.clientY - rect.top) / rect.height));
+
+    const maxTilt = card.classList.contains('mp-spotlight-card') || card.classList.contains('program-poster-banner') ? 2.5 : 4.5;
+    const rx = ((0.5 - py) * maxTilt * 2).toFixed(2);
+    const ry = ((px - 0.5) * maxTilt * 2).toFixed(2);
+
+    card.style.setProperty('--rx', `${rx}deg`);
+    card.style.setProperty('--ry', `${ry}deg`);
+    card.style.setProperty('--gx', `${(px * 100).toFixed(1)}%`);
+    card.style.setProperty('--gy', `${(py * 100).toFixed(1)}%`);
+  });
+
+  document.addEventListener('pointerleave', () => {
+    if (activeCard) {
+      activeCard.classList.remove('is-tilting');
+      activeCard.style.setProperty('--rx', '0deg');
+      activeCard.style.setProperty('--ry', '0deg');
+      activeCard = null;
+    }
+  });
+}
+
 // Best-effort iframe hiding only; this is not a replacement for an HTTP frame-ancestors header.
 function applyBestEffortFrameGuard() {
   if (window.top !== window.self) {
@@ -904,4 +1064,7 @@ document.addEventListener('DOMContentLoaded', () => {
   observeRevealElements();
   initFloatingActions();
   initDialogLightDismissFallback();
+  initSmartHeader();
+  initAnimatedCounters();
+  initCardTiltGlare();
 });

@@ -204,28 +204,28 @@
     <section class="stats-strip" aria-label="أرقام القائمة الانتخابية">
       <div class="container stats-strip__grid">
         <div class="stat-card stat-card--highlight">
-          <div class="stat-card__icon">02</div>
+          <div class="stat-card__icon" data-count-target="2" data-count-pad="2">02</div>
           <div>
             <div class="stat-card__value">القائمة رقم 2</div>
             <div class="stat-card__label">رقم موحد للبلدي والولائي</div>
           </div>
         </div>
         <div class="stat-card">
-          <div class="stat-card__icon">22</div>
+          <div class="stat-card__icon" data-count-target="22">22</div>
           <div>
             <div class="stat-card__value">مترشحاً للبلدي</div>
             <div class="stat-card__label">المجلس الشعبي البلدي القنطرة</div>
           </div>
         </div>
         <div class="stat-card">
-          <div class="stat-card__icon">11</div>
+          <div class="stat-card__icon" data-count-target="11">11</div>
           <div>
             <div class="stat-card__value">مترشحاً للولائي</div>
             <div class="stat-card__label">المجلس الشعبي الولائي القنطرة</div>
           </div>
         </div>
         <div class="stat-card">
-          <div class="stat-card__icon">28</div>
+          <div class="stat-card__icon" data-count-target="28">28</div>
           <div>
             <div class="stat-card__value">نوفمبر 2026</div>
             <div class="stat-card__label">موعد الكلمة لأبناء القنطرة</div>
@@ -313,6 +313,13 @@
       </div>
     </section>
 
+    <!-- فاصل معماري مستوحى من أقواس جسر القنطرة الروماني -->
+    <div class="arch-divider arch-divider--to-mp" aria-hidden="true">
+      <svg viewBox="0 0 1440 54" preserveAspectRatio="none">
+        <path d="M0,54 L0,28 L260,28 A110,24 0 0,1 480,28 L560,28 A160,26 0 0,1 880,28 L960,28 A110,24 0 0,1 1180,28 L1440,28 L1440,54 Z"></path>
+      </svg>
+    </div>
+
     <!-- كلمة وتزكية النائب البرلماني بالمجلس الشعبي الوطني: حفناوي عقبة -->
     <section class="section section--parliamentarian" id="mp-statement">
       <div class="container">
@@ -380,6 +387,13 @@
       </div>
     </section>
 
+    <!-- فاصل معماري مستوحى من أقواس جسر القنطرة الروماني -->
+    <div class="arch-divider arch-divider--to-alt" aria-hidden="true">
+      <svg viewBox="0 0 1440 54" preserveAspectRatio="none">
+        <path d="M0,54 L0,28 L260,28 A110,24 0 0,1 480,28 L560,28 A160,26 0 0,1 880,28 L960,28 A110,24 0 0,1 1180,28 L1440,28 L1440,54 Z"></path>
+      </svg>
+    </div>
+
     <!-- دليل قوائم المترشحين التفاعلي (المجلس الشعبي البلدي 22 + المجلس الشعبي الولائي 11) -->
     <section class="section section--alt" id="candidates">
       <div class="container">
@@ -437,6 +451,13 @@
         <div class="candidates-grid" id="candidatesGrid"></div>
       </div>
     </section>
+
+    <!-- فاصل معماري مستوحى من أقواس جسر القنطرة الروماني -->
+    <div class="arch-divider arch-divider--from-alt" aria-hidden="true">
+      <svg viewBox="0 0 1440 54" preserveAspectRatio="none">
+        <path d="M0,54 L0,28 L260,28 A110,24 0 0,1 480,28 L560,28 A160,26 0 0,1 880,28 L960,28 A110,24 0 0,1 1180,28 L1440,28 L1440,54 Z"></path>
+      </svg>
+    </div>
 
     <!-- البرنامج الانتخابي الرسمي لبلدية القنطرة (العهدة البلدية 2026-2031) -->
     <section class="section section--watermark" id="program">
@@ -823,6 +844,13 @@
       </div>
     </section>
 
+    <!-- فاصل معماري مستوحى من أقواس جسر القنطرة الروماني -->
+    <div class="arch-divider arch-divider--to-alt" aria-hidden="true">
+      <svg viewBox="0 0 1440 54" preserveAspectRatio="none">
+        <path d="M0,54 L0,28 L260,28 A110,24 0 0,1 480,28 L560,28 A160,26 0 0,1 880,28 L960,28 A110,24 0 0,1 1180,28 L1440,28 L1440,54 Z"></path>
+      </svg>
+    </div>
+
     <!-- معرض الملصقات الرسمية للحملة الانتخابية -->
     <section class="section section--alt" id="posters">
       <div class="container">
@@ -970,6 +998,13 @@
       </div>
     </section>
 
+    <!-- فاصل معماري مستوحى من أقواس جسر القنطرة الروماني -->
+    <div class="arch-divider arch-divider--from-alt" aria-hidden="true">
+      <svg viewBox="0 0 1440 54" preserveAspectRatio="none">
+        <path d="M0,54 L0,28 L260,28 A110,24 0 0,1 480,28 L560,28 A160,26 0 0,1 880,28 L960,28 A110,24 0 0,1 1180,28 L1440,28 L1440,54 Z"></path>
+      </svg>
+    </div>
+
     <!-- دليل الناخب: كيف تصوّت يوم 28 نوفمبر 2026؟ -->
     <section class="section" id="how-to-vote">
       <div class="container">
@@ -998,12 +1033,23 @@
             </p>
           </div>
 
-          <div class="step-card">
+          <div class="step-card step-card--ballot">
             <div class="step-card__badge">3</div>
             <h3 class="step-card__title">أشّر على مرشحيك وضع الورقة في الصندوق</h3>
             <p class="step-card__desc">
               داخل المعزل السري، أشّر بعلامة (<strong>X</strong>) أمام مرشحيك في القائمة رقم <strong>02</strong> (مثل المترشح رقم <strong>08 بن حفيظ أحمد تقي الدين</strong> في قائمة المجلس البلدي)، ثم ضع الورقة في الظرف وأودعه الصندوق.
             </p>
+            <!-- محاكاة بصرية متحركة لورقة التصويت وعلامة X -->
+            <div class="ballot-demo" aria-hidden="true">
+              <span class="ballot-demo__num">02</span>
+              <span class="ballot-demo__label">القائمة RND • مثال التأشير</span>
+              <span class="ballot-demo__box">
+                <svg class="ballot-demo__svg" viewBox="0 0 32 32" width="24" height="24" fill="none">
+                  <path class="ballot-demo__stroke ballot-demo__stroke--1" d="M7 7 L25 25" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
+                  <path class="ballot-demo__stroke ballot-demo__stroke--2" d="M25 7 L7 25" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
+                </svg>
+              </span>
+            </div>
           </div>
         </div>
       </div>
